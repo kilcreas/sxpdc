@@ -1,0 +1,85 @@
+1. RESERVED word in byte diagrams is very confusing, e.g.:
+
+>    Compact TLV
+>     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-++-+-+-++-+-+-+-+-+-+-+-+-+
+>     | | | | | | | | | | |1|1|1|1|1|1|1|1|1|1|2|2|2|2|2|2|2|2|2|2|3|3|
+>     |0|1|2|3|4|5|6|7|8|9|0|1|2|3|4|5|6|7|8|9|0|1|2|3|4|5|6|7|8|9|0|1|
+>     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-++-+-+-++-+-+-+-+-+-+-+-+-+
+>     |O|N|P|C|E| | | |  Type         |  TLV Length   |Reserved       |
+>     +-+-+-+-+-+-+-+-+---------------+-------------------------------+
+>     |    Value (Variable: TLV Length octets long)                   |
+>     +---------------------------------------------------------------+
+
+   this diagram indicates that the common header has 4 bytes (1b flags, 1b type,
+   1b length, 1b reserver), while in reality, only 3 bytes are transmitted in
+   header (plus value).
+
+2. Missing description of non-compact attribute format
+
+3. Missing description of versions 1&2
+
+4. Missing table which describes which sxp versions support which attributes
+
+5. Missing attribute descriptions - Del-IPv4, Del-IPv6, Add-IPv4, Add-IPv6
+
+6. On page 36, on very top, there are mentioned:
+>      |Zero or more global optional attributes which are unrelated  |
+>      |to any of the binding delete or add attributes or groups     |
+>      |             below them                                      |
+
+   the draft does not explain which attributes are 'global optional'
+
+7. on page 36:
+
+>   If the length of any attribute is larger
+>   than the SXP Message length or the sum of Attribute Length of all
+>   attributes is larger than the SXP Message length, the Error Sub-code
+>   MUST be set to Malformed Attribute List.
+
+    should the sub error code be attribute length error?
+
+8. on page 37:
+
+>   If an optional transitive attribute is unrecognized, the Partial bit
+>   (the third high-order bit) in the attribute flags octet is set to 1,
+>   and the attribute is retained for export according to the scope in
+>   which the attribute appears.
+
+    the draft does not explain which attributes are 'optional transitive'
+
+9. on page 37:
+
+>   A global attribute is exported along
+>   every binding specified in this UPDATE message on all connections for
+>   which the local peer is a speaker.
+
+    the draft does not explain which attributes are 'global'
+
+10. on page 37:
+
+>   A path attribute is exported
+>   along the bindings from a single path.  A per <path, source-group>
+>   attribute is exported along bindings received from a single path
+>   which share a single Source-Group-Tag attribute.
+
+    the draft does not explain which attributes are 'path'
+    the draft does not explain what a 'source-group' is
+
+11. on page 38:
+
+>  5.  Processing trailing optional non-transitive attributes
+
+   the draft does not explain which attributes are
+   'trailing optional non-transitive'
+
+12. SXP ERROR message: in chapter 4.6 the draft says that the SXP ERROR message
+    has either legacy or extended error format, but there is no information
+    on how to choose which format to use when sending the error message. Is
+    this free to decide or SXP version dependent?
+
+13. on page 44:
+
+      *  Upon the timer expiry, SXP MUST send an ERROR message with Hold
+               Timer Expired code and tear down the connection.
+
+   but there is no such error code described anywhere
