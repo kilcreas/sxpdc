@@ -1,0 +1,50 @@
+<node>
+    <interface name="com.cisco.sxpd">
+        <method name="SxpdInfo">
+            <arg name="bind_ip"                     direction="out" type="u"/>
+            <arg name="bind_port"                   direction="out" type="q"/>
+            <arg name="default_connection_password" direction="out" type="s"/>
+            <arg name="peer_count"                  direction="out" type="t"/>
+            <arg name="expanded_entry_count"        direction="out" type="t"/>
+            <arg name="enabled"                     direction="out" type="b"/>
+        </method>
+        
+        <method name="BindingIteratorNew">
+            <arg name="type" direction="in" type="q"/>
+            <arg name="id" direction="out"  type="u"/>
+        </method>
+        
+        <method name="BindingIteratorFinish">
+            <arg name="type" direction="in" type="q"/>
+            <arg name="id" direction="in" type="u"/>
+        </method>
+        
+        <method name="BindingIterate">
+            <arg name="type"            direction="in" type="q"/>
+            <arg name="id"              direction="in"  type="u"/>
+            <arg name="prefix"          direction="out" type="au"/>
+            <arg name="prefix_length"   direction="out" type="q"/>
+            <arg name="sgt"             direction="out" type="q"/>
+        </method>
+        
+        <method name="PeerIteratorNew">
+            <arg name="id" direction="out"  type="u"/>
+        </method>
+        
+        <method name="PeerIteratorFinish">
+            <arg name="id" direction="in" type="u"/>
+        </method>
+        
+        <method name="PeerIterate">
+            <arg name="id"      direction="in"  type="u"/>
+            <arg name="ip"      direction="out" type="u"/>
+            <arg name="port"    direction="out" type="q"/>
+            <arg name="connections_count"   direction="out" type="t"/>
+            <arg name="retry_timer_active"  direction="out" type="b"/>
+            <arg name="delete_hold_down_timer_active" direction="out" type="b"/>
+            <arg name="reconciliation_timer_active"   direction="out" type="b"/>
+            <arg name="keepalive_timer_active"  direction="out" type="b"/>
+            <arg name="hold_timer_active"       direction="out" type="b"/>
+        </method>
+    </interface>
+</node>

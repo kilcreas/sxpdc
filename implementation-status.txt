@@ -1,0 +1,95 @@
+3.1.  SXP Connection Management
+
+* all current connection/role types are implemented (listener, speaker, both), new "both" mode using one socket is not implemented yet
+
+3.1.1.  SXP Connection
+
+* sxpd in all roles is able to create and accept connections and will drop unneccessary connections as per rfc rules
+
+3.1.2.  SXP Message integrity/authenticity
+
+* setting TCP-MD5SIG option implemented, not tested thoroughly yet
+
+3.1.3.  SXP Connectivity Discovery and Connection Recovery
+
+* implemented
+
+3.1.4.  SXP Connection Setup Sequence
+
+* OPEN/OPEN_RESP messages implemented
+* need to add code to ignore unknown attributes and validate messages
+
+3.1.5.  SXP Connection States
+
+* implemented
+
+3.2.  Binding Database
+
+* being implemented - Jan Omasta is working on integrating Patricia trie for the backend
+* working with mock implementation
+
+3.2.1.  SXP Learned IP-SGT Binding recovery
+
+* implemented
+
+4.  Message Formats
+4.1.  Bit and Octet Numbering Convention
+4.2.  SXP Message Header
+4.3.  Attribute Formats
+4.4.  SXP OPEN and OPEN_RESP Message
+
+* implemented
+
+4.4.1.  Capabilities Advertisement
+
+* implemented
+
+4.4.2.  Keepalive and Hold Time Negotiation
+
+* implemented
+
+4.5.  SXP UPDATE Message
+4.5.1.  UPDATE Attributes
+
+* implemented IPV4/6-Delete-Prefix, IPV4/6-Add-Prefix
+* missing IPV4/6-Add-Table [will probably parse only and not send]
+
+4.6.  SXP ERROR Message
+
+* partially implemented [ ~ 30% ]
+
+4.7.  SXP PURGE-ALL Message
+
+* implemented
+
+4.8.  SXP KEEPALIVE Message
+
+* implemented
+
+5.  Update Message Handling
+5.1.  UPDATE Message Validation
+
+* missing
+
+5.2.  UPDATE Message processing
+
+* parsing IPV4/6-Add/Delete-Prefix messages done
+
+5.3.  Generating UPDATE Message
+
+* creating IPV4/6-Add/Delete-Prefix messages done [ partial batching by peer sequence ]
+* maybe some optimization can be done at memory cost
+
+6.  SXP Failure Scenarios
+
+* connection disconnects on error
+* connection retry done
+
+7.  SXP Timers
+
+* timers implemented
+* need thorough testing
+
+8.  SXP Version Negotiation
+
+* needs implementation - add code for versions 1 & 2

@@ -1,0 +1,13 @@
+<p>SXP daemon core logic contains all the processing logic including:<br>
+</p>
+<ol type="1">
+<li>Handling peers<ul>
+<li>Connection management</li>
+<li>Peer bindings database</li>
+<li>All the necessary timers</li>
+</ul>
+</li>
+<li>Handling bindings database</li>
+<li>Expanding subnets to host entries when configured</li>
+<li>Inspecting the state of SXPD – peers, bindings and global config For this the SXP daemon uses the mentioned abstraction layers (event manager, logging, mem, etc), plus SXP protocol parser and radix tree implementation.</li>
+</ol>
